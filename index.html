@@ -4,52 +4,449 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VYRON — Streetwear</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b0b0b;color:#f5f5f5;font-family:Arial,Helvetica,sans-serif}
-nav{height:72px;border-bottom:1px solid #252525;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:#0b0b0bf2;z-index:10}
-.logo{font-size:30px;font-weight:900;letter-spacing:7px}.links{display:flex;gap:28px}.links a{color:#eee;text-decoration:none;font-size:14px}
-.hero{min-height:560px;padding:100px 7%;display:flex;align-items:center;background:linear-gradient(90deg,#050505 15%,#050505b8 48%,#111 100%)}
-.hero h1{font-size:clamp(55px,9vw,120px);line-height:.85;margin:12px 0;letter-spacing:-5px}.eyebrow{letter-spacing:5px;font-size:12px}.hero p{color:#bbb;letter-spacing:3px}.btn{display:inline-block;margin-top:25px;background:#fff;color:#111;padding:16px 25px;text-decoration:none;font-weight:bold}
-section{padding:65px 5%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.section-head h2{font-size:34px;margin:5px 0}.muted{color:#999;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#151515;padding-bottom:18px}.product-img{height:300px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#242424,#101010);position:relative}
-.product-img:before{content:"";width:60%;height:70%;background:#080808;border-radius:10px;box-shadow:0 20px 40px #000}
-.shirt:before{width:62%;height:55%;border-radius:8px 8px 25px 25px}.beige:before{background:#b8a98f}.gray:before{background:#777}.white:before{background:#ddd}
-.tag{position:absolute;top:12px;left:12px;background:#fff;color:#111;padding:6px 8px;font-size:10px;font-weight:bold}.info{padding:15px}.info h3{font-size:14px;margin:0 0 7px}.price{font-weight:bold}
-.banner{margin:0 5%;padding:55px;background:#171717;text-align:center}.banner h2{font-size:42px;margin:0 0 12px}.banner p{color:#aaa}
-footer{border-top:1px solid #252525;padding:45px 5%;display:flex;justify-content:space-between;color:#999}.footer-logo{color:#fff;font-weight:900;font-size:25px;letter-spacing:5px}
-@media(max-width:800px){.links{display:none}.grid{grid-template-columns:repeat(2,1fr)}.product-img{height:220px}.hero{min-height:480px}.hero h1{font-size:65px}}
-@media(max-width:500px){.grid{grid-template-columns:1fr}.hero{padding:70px 6%}.section-head{display:block}.banner h2{font-size:30px}footer{display:block}.footer-logo{margin-bottom:20px}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b0b0b;
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  height: 72px;
+  border-bottom: 1px solid #252525;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  position: sticky;
+  top: 0;
+  background: rgba(11, 11, 11, 0.95);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 7px;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+}
+
+.links a {
+  color: #eee;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.links a:hover {
+  color: #aaa;
+}
+
+.hero {
+  min-height: 560px;
+  padding: 100px 7%;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(
+      90deg,
+      #050505 15%,
+      #050505b8 48%,
+      #111 100%
+    );
+}
+
+.eyebrow {
+  letter-spacing: 5px;
+  font-size: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(55px, 9vw, 120px);
+  line-height: 0.85;
+  margin: 12px 0;
+  letter-spacing: -5px;
+}
+
+.hero p {
+  color: #bbb;
+  letter-spacing: 3px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  background: #fff;
+  color: #111;
+  padding: 16px 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #ddd;
+}
+
+section {
+  padding: 65px 5%;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.section-head h2 {
+  font-size: 34px;
+  margin: 5px 0;
+}
+
+.muted {
+  color: #999;
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: #151515;
+  padding-bottom: 18px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.product-img {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #242424, #101010);
+  position: relative;
+}
+
+.product-img::before {
+  content: "";
+  width: 60%;
+  height: 70%;
+  background: #080808;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px #000;
+}
+
+.shirt::before {
+  width: 62%;
+  height: 55%;
+  border-radius: 8px 8px 25px 25px;
+}
+
+.beige::before {
+  background: #b8a98f;
+}
+
+.gray::before {
+  background: #777;
+}
+
+.white::before {
+  background: #ddd;
+}
+
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #fff;
+  color: #111;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.info {
+  padding: 15px;
+}
+
+.info h3 {
+  font-size: 14px;
+  margin: 0 0 7px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.banner {
+  margin: 0 5%;
+  padding: 55px;
+  background: #171717;
+  text-align: center;
+}
+
+.banner h2 {
+  font-size: 42px;
+  margin: 0 0 12px;
+}
+
+.banner p {
+  color: #aaa;
+}
+
+footer {
+  border-top: 1px solid #252525;
+  padding: 45px 5%;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+}
+
+.footer-logo {
+  color: #fff;
+  font-weight: 900;
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+@media (max-width: 800px) {
+  .links {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-img {
+    height: 220px;
+  }
+
+  .hero {
+    min-height: 480px;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+  }
+}
+
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 70px 6%;
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .banner h2 {
+    font-size: 30px;
+  }
+
+  footer {
+    display: block;
+  }
+
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+}
 </style>
 </head>
+
 <body>
-<nav><div class="logo">VYRON</div><div class="links"><a href="#accueil">Accueil</a><a href="#boutique">Boutique</a><a href="#apropos">À propos</a></div><div>⌕　♡　🛒</div></nav>
+
+<nav>
+  <div class="logo">VYRON</div>
+
+  <div class="links">
+    <a href="#accueil">Accueil</a>
+    <a href="#boutique">Boutique</a>
+    <a href="#apropos">À propos</a>
+  </div>
+
+  <div>⌕　♡　🛒</div>
+</nav>
 
 <header class="hero" id="accueil">
-<div><div class="eyebrow">NOUVELLE COLLECTION</div><h1>VYRON<br>01</h1><p>SHORTS BAGGY　/　CHANDAILS OVERSIZED</p><a class="btn" href="#boutique">MAGASINER MAINTENANT →</a></div>
+  <div>
+    <div class="eyebrow">NOUVELLE COLLECTION</div>
+
+    <h1>
+      VYRON<br>
+      01
+    </h1>
+
+    <p>
+      SHORTS BAGGY / CHANDAILS OVERSIZED
+    </p>
+
+    <a class="btn" href="#boutique">
+      MAGASINER MAINTENANT →
+    </a>
+  </div>
 </header>
 
 <section id="boutique">
-<div class="section-head"><div><div class="eyebrow">SHORTS BAGGY</div><h2>LES PLUS POPULAIRES</h2></div><div class="muted">COLLECTION 01</div></div>
-<div class="grid">
-<div class="card"><div class="product-img"><span class="tag">NOUVEAU</span></div><div class="info"><h3>SHORT BAGGY ESSENTIAL — NOIR</h3><div class="price">59,99 $</div></div></div>
-<div class="card"><div class="product-img gray"><span class="tag">BEST-SELLER</span></div><div class="info"><h3>SHORT BAGGY ESSENTIAL — GRIS</h3><div class="price">59,99 $</div></div></div>
-<div class="card"><div class="product-img beige"></div><div class="info"><h3>SHORT BAGGY ESSENTIAL — BEIGE</h3><div class="price">59,99 $</div></div></div>
-<div class="card"><div class="product-img"><span class="tag">SIGNATURE</span></div><div class="info"><h3>SHORT BAGGY SIGNATURE — NOIR</h3><div class="price">64,99 $</div></div></div>
-</div>
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">SHORTS BAGGY</div>
+      <h2>LES PLUS POPULAIRES</h2>
+    </div>
+
+    <div class="muted">
+      COLLECTION 01
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="product-img">
+        <span class="tag">NOUVEAU</span>
+      </div>
+
+      <div class="info">
+        <h3>SHORT BAGGY ESSENTIAL — NOIR</h3>
+        <div class="price">59,99 $</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="product-img gray">
+        <span class="tag">BEST-SELLER</span>
+      </div>
+
+      <div class="info">
+        <h3>SHORT BAGGY ESSENTIAL — GRIS</h3>
+        <div class="price">59,99 $</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="product-img beige"></div>
+
+      <div class="info">
+        <h3>SHORT BAGGY ESSENTIAL — BEIGE</h3>
+        <div class="price">59,99 $</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="product-img">
+        <span class="tag">SIGNATURE</span>
+      </div>
+
+      <div class="info">
+        <h3>SHORT BAGGY SIGNATURE — NOIR</h3>
+        <div class="price">64,99 $</div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <section>
-<div class="section-head"><div><div class="eyebrow">CHANDAILS OVERSIZED</div><h2>ESSENTIELS VYRON</h2></div></div>
-<div class="grid">
-<div class="card"><div class="product-img shirt"><span class="tag">BEST-SELLER</span></div><div class="info"><h3>CHANDAIL OVERSIZED — NOIR</h3><div class="price">34,99 $</div></div></div>
-<div class="card"><div class="product-img shirt white"></div><div class="info"><h3>CHANDAIL OVERSIZED — BLANC</h3><div class="price">34,99 $</div></div></div>
-<div class="card"><div class="product-img shirt gray"></div><div class="info"><h3>CHANDAIL OVERSIZED — GRIS</h3><div class="price">34,99 $</div></div></div>
-<div class="card"><div class="product-img shirt"><span class="tag">GRAPHIC</span></div><div class="info"><h3>CHANDAIL OVERSIZED GRAPHIC</h3><div class="price">39,99 $</div></div></div>
-</div>
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">CHANDAILS OVERSIZED</div>
+      <h2>ESSENTIELS VYRON</h2>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="product-img shirt">
+        <span class="tag">BEST-SELLER</span>
+      </div>
+
+      <div class="info">
+        <h3>CHANDAIL OVERSIZED — NOIR</h3>
+        <div class="price">34,99 $</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="product-img shirt white"></div>
+
+      <div class="info">
+        <h3>CHANDAIL OVERSIZED — BLANC</h3>
+        <div class="price">34,99 $</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="product-img shirt gray"></div>
+
+      <div class="info">
+        <h3>CHANDAIL OVERSIZED — GRIS</h3>
+        <div class="price">34,99 $</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="product-img shirt">
+        <span class="tag">GRAPHIC</span>
+      </div>
+
+      <div class="info">
+        <h3>CHANDAIL OVERSIZED GRAPHIC</h3>
+        <div class="price">39,99 $</div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<div class="banner" id="apropos"><h2>PLUS QU’UNE MARQUE.</h2><p>Un style simple, large et assumé. VYRON — Collection 01.</p></div>
+<div class="banner" id="apropos">
+  <h2>PLUS QU’UNE MARQUE.</h2>
+  <p>
+    Un style simple, large et assumé.
+    VYRON — Collection 01.
+  </p>
+</div>
 
-<footer><div><div class="footer-logo">VYRON</div><p>STYLE / CONFIDENCE / VYRON</p></div><div><b>INFORMATIONS</b><p>Livraison　Retours　FAQ　Contact</p></div><div><b>CANADA</b><p>Prix en CAD</p></div></footer>
+<footer>
+
+  <div>
+    <div class="footer-logo">VYRON</div>
+    <p>STYLE / CONFIDENCE / VYRON</p>
+  </div>
+
+  <div>
+    <b>INFORMATIONS</b>
+    <p>Livraison　Retours　FAQ　Contact</p>
+  </div>
+
+  <div>
+    <b>CANADA</b>
+    <p>Prix en CAD</p>
+  </div>
+
+</footer>
+
 </body>
 </html>
